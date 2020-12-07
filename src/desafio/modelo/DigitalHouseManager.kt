@@ -1,11 +1,14 @@
 package desafio.modelo
 
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
 class DigitalHouseManager() {
 
-    val alunos = mutableListOf<Aluno>()
-    val professores = mutableListOf<Professor>()
-    val cursos = mutableListOf<Curso>()
-    val matriculas = mutableListOf<Matricula>()
+    private val alunos = mutableListOf<Aluno>()
+    private val professores = mutableListOf<Professor>()
+    private val cursos = mutableListOf<Curso>()
+    private val matriculas = mutableListOf<Matricula>()
 
 
     fun registrarCurso(nome: String, codigoCurso: Int, quantidadeMaximaDeAlunos: Int ){
@@ -60,12 +63,13 @@ class DigitalHouseManager() {
     fun matricularAluno(codigoAluno: Int, codigoCurso: Int){
         var alunoAMatricular = buscaAluno(codigoAluno)
         var cursoAMatricular = buscaCurso(codigoCurso)
+        val data = LocalDateTime.now()
 
         if (alunoAMatricular != null && cursoAMatricular != null){
             if (cursoAMatricular.adicionarUmAluno(alunoAMatricular) == true) {
-                val matricula = Matricula(alunoAMatricular, cursoAMatricular, dataMatricula = "0000000")
+                val matricula = Matricula(alunoAMatricular, cursoAMatricular,data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")))
                 matriculas.add(matricula)
-                println("Matricula criada com sucesso")
+                println("O ${alunoAMatricular.nome} foi matriculado no Curso ${cursoAMatricular.nome} em ${matricula.dataMatricula}")
             }else {
                 println("Não há vagas disponiveis")
             }

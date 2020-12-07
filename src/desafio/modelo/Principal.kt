@@ -28,11 +28,4 @@ fun main() {
     digitalHouseManager.matricularAluno(3, 20002)
     digitalHouseManager.matricularAluno(4, 20002)
     digitalHouseManager.matricularAluno(5, 20002)
-
-
-
-
-
-
-
 }
