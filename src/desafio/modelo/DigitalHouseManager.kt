@@ -45,7 +45,7 @@ class DigitalHouseManager() {
 
     }
 
-    fun registrarProfessorTitular(nome: String , sobrenome: String , codigoProfessor: Int,tempoDeCasa :Int, especialidade: String){
+    fun registrarProfessorTitular(nome: String , sobrenome: String , codigoProfessor: Int, especialidade: String){
         if (buscaProfessorTitular(codigoProfessor) is ProfessorTitular){
             println("Não foi possivel cadastrar o Professor Titular, código $codigoProfessor, já inserido no sistema!")
         }else {

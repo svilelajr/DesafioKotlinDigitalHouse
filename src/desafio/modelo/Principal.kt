@@ -11,9 +11,9 @@ fun main() {
     digitalHouseManager.registrarAluno("Nome4", "SobreNome4", 4)
     digitalHouseManager.registrarAluno("Nome5", "SobreNome5", 5)
 
-    digitalHouseManager.registrarProfessorTitular("ProfTitular1", "SobrenomeProfTitular1", 1, 3, "Cálculo")
-    digitalHouseManager.registrarProfessorTitular("ProfTitular1", "SobrenomeProfTitular1", 1, 3, "Cálculo")
-    digitalHouseManager.registrarProfessorTitular("ProfTitular2", "SobrenomeProfTitular1", 2, 2, "Java")
+    digitalHouseManager.registrarProfessorTitular("ProfTitular1", "SobrenomeProfTitular1", 1, "Cálculo")
+    digitalHouseManager.registrarProfessorTitular("ProfTitular1", "SobrenomeProfTitular1", 1, "Cálculo")
+    digitalHouseManager.registrarProfessorTitular("ProfTitular2", "SobrenomeProfTitular1", 2, "Java")
 
     digitalHouseManager.registrarProfessorAdjunto("ProfTAdjunto1", "SobrenomeProfTAdjunto2", 3, 12)
     digitalHouseManager.registrarProfessorAdjunto("ProfTAdjunto1", "SobrenomeProfTAdjunto2", 3, 12)
