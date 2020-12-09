@@ -13,9 +13,14 @@ class DigitalHouseManager() {
 
     fun registrarCurso(nome: String, codigoCurso: Int, quantidadeMaximaDeAlunos: Int ){
 
-        val curso = Curso(nome = nome, codigoCurso = codigoCurso, quantidadeMaximaAlunos = quantidadeMaximaDeAlunos)
-        cursos.add(curso)
-        println("O curso ${curso.nome},codigo ${curso.codigoCurso} e com quantidade maxima de ${curso.quantidadeMaximaAlunos} alunos, foi registrado com sucesso!!")
+        if(buscaCurso(codigoCurso) is Curso){
+            println("Não foi possivel cadastrar o Curso, código $codigoCurso, já inserido no sistema!")
+        } else {
+            val curso = Curso(nome = nome, codigoCurso = codigoCurso, quantidadeMaximaAlunos = quantidadeMaximaDeAlunos)
+            cursos.add(curso)
+            println("O curso ${curso.nome},codigo ${curso.codigoCurso} e com quantidade maxima de ${curso.quantidadeMaximaAlunos} alunos, foi registrado com sucesso!!")
+        }
+
 
     }
 
@@ -29,18 +34,25 @@ class DigitalHouseManager() {
 
     fun registrarProfessorAdjunto(nome: String , sobrenome: String , codigoProfessor: Int, quantidadeDeHoras: Int){
 
-        val professorAdjunto = ProfessorAdjunto(nome = nome,sobrenome = sobrenome,tempoDeCasa = 0, codigoProfessor = codigoProfessor, horasMonitoria = quantidadeDeHoras)
-        professores.add(professorAdjunto)
-        println("O Professor Adjunto ${professorAdjunto.nome} ${professorAdjunto.sobrenome} seu codigo é ${professorAdjunto.codigoProfessor}, com ${professorAdjunto.tempoDeCasa} de tempo de casa e com ${professorAdjunto.horasMonitoria} horas de monitoria ")
+        if (buscaProfessorAdjunto(codigoProfessor) is ProfessorAdjunto){
+            println("Não foi possivel cadastrar o Professor Adjunto, código $codigoProfessor, já inserido no sistema!")
+        }else {
+            val professorAdjunto = ProfessorAdjunto(nome = nome,sobrenome = sobrenome,tempoDeCasa = 0, codigoProfessor = codigoProfessor, horasMonitoria = quantidadeDeHoras)
+            professores.add(professorAdjunto)
+            println("O Professor Adjunto ${professorAdjunto.nome} ${professorAdjunto.sobrenome} seu codigo é ${professorAdjunto.codigoProfessor}, com ${professorAdjunto.tempoDeCasa} de tempo de casa e com ${professorAdjunto.horasMonitoria} horas de monitoria ")
+        }
+
 
     }
 
     fun registrarProfessorTitular(nome: String , sobrenome: String , codigoProfessor: Int,tempoDeCasa :Int, especialidade: String){
-
+        if (buscaProfessorTitular(codigoProfessor) is ProfessorTitular){
+            println("Não foi possivel cadastrar o Professor Titular, código $codigoProfessor, já inserido no sistema!")
+        }else {
         val professorTitular = ProfessorTitular(nome = nome,sobrenome = sobrenome,tempoDeCasa = 0, codigoProfessor = codigoProfessor, especialidade = especialidade)
         professores.add(professorTitular)
         println("O Professor Titular ${professorTitular.nome} ${professorTitular.sobrenome} seu codigo é ${professorTitular.codigoProfessor}, com ${professorTitular.tempoDeCasa} de tempo de casa e com especialidade em ${professorTitular.especialidade}")
-
+        }
     }
 
     fun excluirProfessor(codigoProfessor: Int){
@@ -53,10 +65,15 @@ class DigitalHouseManager() {
 
 
     fun registrarAluno(nome: String,sobrenome: String, codigoAluno: Int){
+        if(buscaAluno(codigoAluno) is Aluno){
+            println("Não foi possivel cadastrar o Aluno, código $codigoAluno, já inserido no sistema!")
+        }else{
+            val aluno = Aluno(nome = nome, sobrenome = sobrenome, codigoAluno = codigoAluno)
+            alunos.add(aluno)
+            println("O Aluno ${aluno.nome} ${aluno.sobrenome} foi cadastrado com o código ${aluno.codigoAluno}")
+        }
 
-        val aluno = Aluno(nome = nome, sobrenome = sobrenome, codigoAluno = codigoAluno)
-        alunos.add(aluno)
-        println("O Aluno ${aluno.nome} ${aluno.sobrenome} foi cadastrado com o código ${aluno.codigoAluno}")
+
 
     }
 
